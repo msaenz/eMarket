@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <body>
+      <canvas id="canvasElem" width="100" height="80" style="border:1px solid"></canvas>
+      
+      <input type="button" value="Submit" onclick="submit()">
+      
+  </body>
+      
+  <script>
+    let myHeader = new Headers({
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'multipart/form-data'
+    });
+    let myInit = {
+      mode: 'cors',
+      header: myHeader,
+    }
+    const URL = 'http://localhost:3789/api/productos'; 
+    fetch(URL)
+    .then(res => res.json())
+    .then(data => data =data.data)
+    .then(data => console.log(data))
+    .catch(e => {
+      console.error(e);
+      // reportError(); // Supposed Error Reporting Function that you have defined.
+    })
+
+    
+    // fetch('http://localhost:3789/api/categories', myInit)
+    // .then(function(response) {
+    //   // a = response.json();
+    //   a = response.json();
+    //   console.log("a", a)
+    //   return a;
+    // })
+    // .then(function(myJson) {
+    //   console.log(myJson);
+    // });
+  </script>
+</html>
